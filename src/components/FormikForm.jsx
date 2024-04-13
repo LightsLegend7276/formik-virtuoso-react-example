@@ -1,7 +1,22 @@
-import { Field, Form, Formik, useField } from 'formik';
+import { Field, Form as FormikForm, Formik, useField } from 'formik';
+import Form from "react-bootstrap/Form"
 import React, { memo } from 'react';
 
-const FormikForm = memo(() => {
+const MasterCheckBox = (props) => {
+    const [field] = useField(props);
+    const {setFieldValue, checked} = props;
+
+    return (
+        <Form.Check 
+        label={"Master Check Box"}
+        {...field}
+        {...props}
+        onChange={() => {checked ? setFieldValue("members", []) : setFieldValue("members", ["1", "2", "3", "4"])}}
+        />
+    )
+}
+
+const FormikFormComponent = memo(() => {
     const optionValues = ["1", "2", "3", "4"];
 
 
@@ -12,10 +27,8 @@ const FormikForm = memo(() => {
         validateOnBlur={false}>
             {({values, setFieldValue}) => (
                 <div className='form-container'>
-                <Form>
-                    <label>Master Check Box
-                        <Field name="members" type="checkbox" value="0" onChange={() => {checked ? setFieldValue("members", []) : setFieldValue("members", ["1", "2", "3", "4"])}} checked={JSON.stringify(optionValues) === JSON.stringify(values.members)} />
-                    </label>
+                <FormikForm>
+                        <Field name="members" type="checkbox" value="0" checked={JSON.stringify(optionValues) === JSON.stringify(values.members)} as={MasterCheckBox} setFieldValue={setFieldValue} />
                     <label>Checkbox 1
                         <Field name="members" type="checkbox" value="1"/>
                     </label>
@@ -28,7 +41,7 @@ const FormikForm = memo(() => {
                     <label>Checkbox 4
                         <Field name="members" type="checkbox" value="4"/>
                     </label>
-                </Form>
+                </FormikForm>
                 <pre>{`values: ${JSON.stringify(values, null, 2)}`}</pre>
                 </div>
             )}
@@ -36,14 +49,7 @@ const FormikForm = memo(() => {
     );
 });
 
-// const MasterCheckBox = (props) => {
-//     const [field] = useField(props);
 
-//     return (
-//         <Form.Check 
-//     )
-// }
+FormikFormComponent.displayName = "FormikFormComponent"
 
-FormikForm.displayName = "FormikForm"
-
-export default FormikForm;
+export default FormikFormComponent;
