@@ -1,11 +1,12 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+  box-sizing: border-box;
+} */
 
-.logo {
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -39,4 +40,31 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+.container, .form-container {
+  display: flex;
+
+}
+
+.container:has(h1) {
+  justify-content: center;
+}
+
+.form-container:has(form) {
+  border: 5px black solid;
+  min-height: 50vh;
+  width: 50vw;
+  margin: auto;
+  flex-direction: column;
+  /* align-content: center; */
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container form, pre {
+  align-self: center;
 }
