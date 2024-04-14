@@ -2,7 +2,7 @@ import { Field, Form as FormikForm, Formik, useField } from 'formik';
 import Form from "react-bootstrap/Form"
 import React, { memo } from 'react';
 import {data} from './utils/Data'
-import VirtuosoExample from './VirtuosoExample';
+import VirtuosoList from './VirtuosoList';
 
 const MasterCheckBox = (props) => {
     const [field] = useField(props);
@@ -29,21 +29,17 @@ export const NormalCheckbox = (props) => {
 }
 
 const FormikFormComponent = memo(() => {
-    const optionValues = ["1", "2", "3", "4"];
-
 
     return (
         <Formik
-        initialValues={{members: []}}
-        onSubmit={() => {}}
-        validateOnBlur={false}>
+        initialValues={{members: []}}>
             {({values, setFieldValue}) => (
                 <div className='form-container'>
                 <FormikForm>
-                        <Field name="members" type="checkbox" value="0" checked={JSON.stringify(data.map((_, i) => { return (i + 1).toString()})) === JSON.stringify(values.members)} as={MasterCheckBox} setFieldValue={setFieldValue}  />
-                        <VirtuosoExample />
+                        <Field name="members" type="checkbox" value="0" checked={JSON.stringify(data.map((_, i) => { return (i + 1).toString()})) === JSON.stringify(values.members)} as={MasterCheckBox} setFieldValue={setFieldValue} />
+                        <VirtuosoList />
                 </FormikForm>
-                <pre>{`values: ${JSON.stringify(values, null, 2)}`}</pre>
+                {/* <pre>{`values: ${JSON.stringify(values, null, 2)}`}</pre> */}
                 </div>
             )}
         </Formik>

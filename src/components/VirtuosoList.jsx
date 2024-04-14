@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 import { Virtuoso } from 'react-virtuoso'
 import { Field } from 'formik'
-import { NormalCheckbox } from '../components/FormikForm'
+import { NormalCheckbox } from './FormikForm'
 import { data } from './utils/Data'
 
-const VirtuosoExample = memo(() => {
+const VirtuosoList = memo(() => {
     return (
         <Virtuoso
         style={{ height: 200, }}
@@ -16,6 +16,6 @@ const VirtuosoExample = memo(() => {
     );
 });
 
-VirtuosoExample.displayName = "VirtuosoExample";
+VirtuosoList.displayName = "VirtuosoList";
 
-export default VirtuosoExample;
+export default VirtuosoList;
