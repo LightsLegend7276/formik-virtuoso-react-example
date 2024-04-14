@@ -82,3 +82,20 @@
 pre {
   color: black;
 }
+
+.form-check, .master-checkbox {
+  border-bottom: 1px black solid;
+}
+
+/* div:has(div.form-check):nth-child(odd) {
+background-color: red;
+} */
+
+[data-test-id="virtuoso-item-list"] div:has(div.form-check):nth-child(odd) {
+  /* border: 1px pink solid; */
+  background-color: rgba(71, 65, 65, 0.514);
+}
+
+.master-checkbox {
+  margin-bottom: .25rem;
+}
