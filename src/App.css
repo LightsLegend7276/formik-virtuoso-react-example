@@ -52,19 +52,33 @@
 }
 
 .form-container:has(form) {
-  border: 5px black solid;
+--bg-color: lime;
+
+  border: 20px var(--bg-color) solid;
+  border-radius: 50px;
   min-height: 50vh;
   width: 50vw;
   margin: auto;
   flex-direction: column;
+  background-color: var(--bg-color);
   /* align-content: center; */
 }
 
 .form-container form {
   display: flex;
   flex-direction: column;
+  min-width: 150px;
+  background-color: var(--bg-color);
 }
 
 .form-container form, pre {
   align-self: center;
+}
+
+.form-check-label {
+  color: black;
+}
+
+pre {
+  color: black;
 }

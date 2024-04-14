@@ -1,6 +1,8 @@
 import { Field, Form as FormikForm, Formik, useField } from 'formik';
 import Form from "react-bootstrap/Form"
 import React, { memo } from 'react';
+import {data} from './utils/Data'
+import VirtuosoExample from './VirtuosoExample';
 
 const MasterCheckBox = (props) => {
     const [field] = useField(props);
@@ -10,12 +12,12 @@ const MasterCheckBox = (props) => {
         <Form.Check 
         {...field}
         {...props}
-        onChange={() => {checked ? setFieldValue("members", []) : setFieldValue("members", ["1", "2", "3", "4"])}}
+        onChange={() => {checked ? setFieldValue("members", []) : setFieldValue("members", data.map((_, i) => { return (i + 1).toString()}))}}
         />
     )
 }
 
-const NormalCheckBox = (props) => {
+export const NormalCheckbox = (props) => {
     const [field] = useField(props);
 
     return (
@@ -38,11 +40,8 @@ const FormikFormComponent = memo(() => {
             {({values, setFieldValue}) => (
                 <div className='form-container'>
                 <FormikForm>
-                        <Field name="members" type="checkbox" value="0" checked={JSON.stringify(optionValues) === JSON.stringify(values.members)} as={MasterCheckBox} setFieldValue={setFieldValue} label={"Master Check Box"} />
-                        <Field name="members" type="checkbox" value="1" label={"Checkbox 1"} as={NormalCheckBox}/>
-                        <Field name="members" type="checkbox" value="2" label={"Checkbox 2"} as={NormalCheckBox}/>
-                        <Field name="members" type="checkbox" value="3" label={"Checkbox 3"} as={NormalCheckBox}/>
-                        <Field name="members" type="checkbox" value="4" label={"Checkbox 4"} as={NormalCheckBox}/>
+                        <Field name="members" type="checkbox" value="0" checked={JSON.stringify(data.map((_, i) => { return (i + 1).toString()})) === JSON.stringify(values.members)} as={MasterCheckBox} setFieldValue={setFieldValue}  />
+                        <VirtuosoExample />
                 </FormikForm>
                 <pre>{`values: ${JSON.stringify(values, null, 2)}`}</pre>
                 </div>
