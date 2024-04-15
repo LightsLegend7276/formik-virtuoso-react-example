@@ -39,7 +39,7 @@ const FormikFormComponent = memo(() => {
                         <Field className={"master-checkbox"} name="members" type="checkbox" value="0" checked={JSON.stringify(data.map((_, i) => { return (i + 1).toString()})) === JSON.stringify(values.members)} as={MasterCheckBox} setFieldValue={setFieldValue} />
                         <VirtuosoList />
                 </FormikForm>
-                {/* <pre>{`values: ${JSON.stringify(values, null, 2)}`}</pre> */}
+                <pre>{`values: ${JSON.stringify(values, null, 2)}`}</pre>
                 </div>
             )}
         </Formik>

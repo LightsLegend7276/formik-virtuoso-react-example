@@ -10,7 +10,7 @@ const VirtuosoList = memo(() => {
         style={{ height: 200, }}
         data={data}
         itemContent={(i, checkbox) => (
-            <Field key={`Checkbox ${i + 1}`} value={(i + 1).toString()} label={`Checkbox ${i + 1}`} as={NormalCheckbox} {...checkbox} />
+            <Field key={`Checkbox ${i + 1}`} id={`Checkbox ${i + 1}`} value={(i + 1).toString()} label={`Checkbox ${i + 1}`} as={NormalCheckbox} {...checkbox} />
         )}
          />
     );
